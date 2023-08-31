@@ -2,7 +2,7 @@
 - name: Install HTTPD
   hosts: localhost
   become: yes
-  remote_user: madhu
+  become_user: madhu
   vars_files:
     - /etc/ansible/vars.yaml
   vars:
