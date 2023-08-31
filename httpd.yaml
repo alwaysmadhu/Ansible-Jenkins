@@ -3,6 +3,10 @@
   hosts: localhost
   become: yes
   become_user: madhu
+  var_files:
+    - /etc/ansible/vars.yaml
+  vars:
+    ansible_become_pass: "{{ my_sudo_pass }}"
   tasks:
     - name: Update apt cache
       apt:
@@ -17,4 +21,3 @@
       service:
         name: apache2
         state: started
-        enabled: yes
