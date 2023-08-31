@@ -1,6 +1,6 @@
 ---
 - name: Install HTTPD
-  hosts: 16.171.28.72
+  hosts: localhost
   become: yes
   become_user: madhu
   vars_files:
