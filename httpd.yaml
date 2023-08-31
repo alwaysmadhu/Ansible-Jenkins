@@ -8,10 +8,6 @@
   vars:
     ansible_become_pass: "{{my_sudo_pass}}"
   tasks:
-    - name: Update apt cache
-      apt:
-        update_cache: yes
-
     - name: Install Apache HTTPD web server
       apt:
         name: apache2
