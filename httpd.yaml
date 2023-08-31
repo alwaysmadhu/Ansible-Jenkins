@@ -2,6 +2,7 @@
 - name: Install HTTPD
   hosts: localhost
   become: yes
+  become_user: madhu
   tasks:
     - name: Update apt cache
       apt:
