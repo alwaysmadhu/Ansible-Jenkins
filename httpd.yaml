@@ -1,7 +1,7 @@
 ---
 - name: Install HTTPD
   hosts: localhost
-  become_method: sudo
+  become: yes
   become_user: madhu
   vars_files:
     - /etc/ansible/vars.yaml
@@ -12,10 +12,7 @@
       apt:
         name: apache2
         state: present
-      become: yes
-
     - name: Start Apache HTTPD web server
       service:
         name: apache2
         state: started
-      become: yes
