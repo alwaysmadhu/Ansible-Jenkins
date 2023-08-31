@@ -1,6 +1,7 @@
 ---
 - name: Install HTTPD
   hosts: localhost
+  become_method: sudo
   become_user: madhu
   vars_files:
     - /etc/ansible/vars.yaml
