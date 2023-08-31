@@ -12,8 +12,10 @@
       apt:
         name: apache2
         state: present
+      become: yes
 
     - name: Start Apache HTTPD web server
       service:
         name: apache2
         state: started
+      become: yes
