@@ -1,6 +1,6 @@
 ---
 - name: Install HTTPD
-  hosts: all
+  hosts: localhost
   become_user: madhu
   tasks:
     - name: Install Apache HTTPD web server
