@@ -3,17 +3,19 @@ pipeline {
     stages {
         stage ('clone repo'){
             steps {
-                sh "git clone https://github.com/alwaysmadhu/Ansible-Jenkins.git"
+              sh "git clone https://github.com/alwaysmadhu/Ansible-Jenkins.git"
             }
         }
         stage ('Execute Playbook') {
             steps {
-            ansiblePlaybook credentialsId: 'ApacheWeb', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/httpd.yaml'
+              ansiblePlaybook credentialsId: 'ApacheWeb', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/httpd.yaml'
             }
         }
-        stage ('restart web server') {
+        stage('Restart Apache2') {
             steps {
-                sh 'sudo systemctl restart apache2'
+              sshagent(['ApacheWeb']) {
+                ssh -A ubuntu@16.171.253.118 "sudo service apache2 restart"
+              }
             }
         }
     }
