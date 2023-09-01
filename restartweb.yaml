@@ -1,0 +1,9 @@
+---
+- name: Install HTTPD
+  hosts: all
+  become: yes
+  tasks:
+    - name: Restart Apache web server
+      service:
+        name: apache2
+        state: restarted
