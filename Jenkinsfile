@@ -14,7 +14,7 @@ pipeline {
         stage('Restart Apache2') {
             steps {
               sshagent(['ApacheWeb']) {
-                ssh -A ubuntu@16.171.253.118 "sudo service apache2 restart"
+                sh 'ssh -A ubuntu@16.171.253.118 "sudo service apache2 restart"'
               }
             }
         }
