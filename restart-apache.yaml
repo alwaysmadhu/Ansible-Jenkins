@@ -1,5 +1,5 @@
 ---
-- name: Install HTTPD
+- name: Restart HTTPD
   hosts: all
   become: yes
   tasks:
