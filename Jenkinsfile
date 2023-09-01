@@ -1,15 +1,9 @@
 pipeline {
-    agent any
+    ageny any
     stages {
-        stage('Run Ansible Playbook') {
-            steps {
-                sh 'ansible-playbook httpd.yaml'
-            }
-        }
-        stage('Restart Apache HTTPD') {
-            steps {
-                sh 'sudo systemctl restart apache2'
-            }
+        stage ('Execute Playbook') {
+            ansiblePlaybook credentialsId: 'ApacheWeb', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/httpd.yaml'
+            
         }
     }
 }
